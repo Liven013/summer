@@ -1,5 +1,6 @@
 from sqlmodel import SQLModel, create_engine
-from models.db import User, CampShift, Organization, UserCampShiftLink
+from models.db import User, CampShift, Organization
+from models.db import UserCampShiftLink
 
 DATABASE_URL = "sqlite:///./database.db"
 engine = create_engine(DATABASE_URL, echo = True)
