@@ -1,12 +1,23 @@
 from pydantic import BaseModel, EmailStr
 from datetime import date
 
-class UserCreate(BaseModel):
+class BaseUser(BaseModel):
     name: str
     surname: str
     email: EmailStr
-    password_hash: str
     bday: date
 
-    class Config: 
+class UserInDB(BaseUser):
+    password_hash: str
+
+    class Config:
         orm_mode = True
+
+class UserIn(BaseUser):
+    password: str
+
+class UserOut(BaseUser):
+    pass
+
+class UserWithCampShifts(UserOut):
+    camp_shifts: list[str]
